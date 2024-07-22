@@ -1,0 +1,637 @@
+:root{
+    --h1:42px;
+    --h2:36px;
+    --h3:30px;
+    --h4:24px;
+    --h5:20px;
+    --h6:14px;  /*#FF7C6D*/
+    --pink:#FF7C6D;
+    --black:#04010E;
+}
+*{
+    font-family: 'Roboto', sans-serif;
+}
+body{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+body::-webkit-scrollbar {
+  width: 8px;
+}
+body::-webkit-scrollbar-thumb{
+    width: 8px;
+    background-color: var(--pink);
+}
+body::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+nav{
+    width: 100%;
+    height: 50px;
+    background-color: var(--pink);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+nav .logo{
+    width: auto;
+    height: 50px;
+    margin: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+nav .logo h1{
+    color: white;
+    font-size: var(--h3);
+    margin: 10px;
+}
+.navigation-one{
+    width: 100%;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+.navigation-one li{
+    text-decoration: none;
+    list-style: none;
+    margin: 10px;
+    padding: 0%;
+    width: 50px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navigation-one li svg{
+    transform: scale(1.7)
+}
+.profile-img img{
+    width: 35px;
+    height: 35px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.profile-cart{
+    width: 150px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(13, 13, 13, 0.37);
+    backdrop-filter: blur(12px);
+    padding: 5px;
+    padding-top: 0;
+    padding-bottom: 0;
+    position: fixed;
+    right: 20px;
+    top: 55px;
+    border-radius: 10px;
+    z-index: 10;
+    transform-origin: right top;
+    transform: scale(0);
+}
+.profile-cart ul{
+    width: 150px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+.profile-cart ul li{
+    width: 140px;
+    list-style: none;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    font-size: var(--h5);
+    color: white;
+}
+.profile-cart ul li:hover{
+    background-color: #ff7b6d9c;
+    backdrop-filter: blur(12px);
+}
+.profile-cart ul li a{
+    text-decoration: none;
+    font-size: var(--h5);
+    color: white;
+}
+.profile-cart ul li:first-child{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.profile-cart ul li:last-child {
+border-bottom-left-radius: 10px;
+border-bottom-right-radius: 10px;
+}
+.sub-nav{
+    display: none;
+   
+}
+.container{
+    box-sizing: border-box;
+    width: 100%;
+    height: calc(100vh - 50px);
+    display: flex;
+    flex-direction:row-reverse;
+    gap: 10px;
+    justify-content: space-between;
+}
+.friends{
+    box-sizing: border-box;
+    width: 30%;
+    height: calc(100vh - 80px);
+    overflow-y: scroll;
+    margin: 0px;
+    margin-left: 10px;
+    border: solid 1px rgba(150, 150, 150, 0.418);
+    margin-top: 20px;
+    padding: 0px;
+}
+.friends::-webkit-scrollbar {
+  width: 8px;
+}
+.friends::-webkit-scrollbar-thumb{
+    width: 8px;
+    background-color: var(--pink);
+}
+.friends::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+.friends img{
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.titel{
+    color: var(--pink);
+    font-size: var(--h4);
+    border-bottom: solid 1px rgba(150, 150, 150, 0.418);
+    width: 100%;
+    height: 50px;
+   
+}
+.titel h3{
+     margin-left: 20px;
+}
+.friends h4{
+    color: var(--black);
+    font-size: 16px;
+    cursor: pointer;
+}
+.friends-list{
+    width: 100%;
+    height: 80px;
+    box-sizing: border-box;
+}
+.friends-list a{
+    text-decoration: none;
+}
+.friends-list div{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    cursor: pointer;
+}
+.friends-list div:hover{
+    background-color: #ff7b6d9c;
+}
+.friends-list h4{
+    margin-left: 15px;
+}
+.discuss{
+    width: 70%;
+    height: calc(100vh - 80px);
+    border: solid 1px rgba(150, 150, 150, 0.418);
+    margin-top: 20px;
+    padding: 0px;
+    margin-right: 10px;
+    position: relative;
+}
+.friend{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    border-bottom: solid 1px rgba(150, 150, 150, 0.418);
+}
+.friend img{
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.friend .friend-info{
+    width: fit-content;
+    height: 80px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    box-sizing: border-box;
+}
+.friend-info h4{
+    margin-left: 15px;
+    color: var(--black);
+    cursor: pointer;
+}
+.online-phone{
+    width: 100px;
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.online-phone svg{
+    transform: scale(1.7) rotate(260deg);
+    fill: var(--pink);
+    cursor: pointer;
+}
+.online{
+    width: 15px;
+    height: 15px;
+    border-radius: 20px;
+    background-color: rgb(0, 241, 0);
+}
+.send{
+    width:  100%;
+    height:60px ;
+    position: absolute;
+    box-sizing: border-box;
+    border-top: solid 1px rgba(150, 150, 150, 0.418);
+    bottom: 10px;
+}
+.send svg{
+     transform: scale(1.8) rotate(45deg);
+    position: absolute;
+ right: 35px;
+ bottom: 15px;
+    fill: var(--pink);
+    cursor: pointer;
+}
+.send input{
+    width:  97%;
+    height:60px ;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 10px;
+    border: solid 2px var(--pink);
+    color: var(--black);
+    font-weight:800 ;
+    font-size: 16px;
+    padding-right: 50px;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+.messages{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    height:calc(100vh - 240px);
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+}
+.messages::-webkit-scrollbar {
+  width: 8px;
+}
+.messages::-webkit-scrollbar-thumb{
+    width: 8px;
+    background-color: var(--pink);
+}
+.messages::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+
+.messages div{
+    max-width: 80%;
+    height: fit-content;
+    padding-right: 10px;
+    padding-left: 10px;
+    box-sizing: border-box;
+    font-size:16px;
+    color: var(--black);
+    background-color: var(--pink);
+    margin-top: 5px;
+    border-radius: 10px;
+}
+.my-messages{
+    place-self:flex-end ;
+    max-width: 80%;
+}
+.his-messages{
+    place-self:flex-start ;
+    max-width: 80%;
+}
+.create-post{
+    width: 500px;
+    height: 85vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: white;
+    z-index: 999;
+    display: none; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+.create-post  input:first-child{
+    width:95%;
+    height: 200px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: solid 2px var(--pink);
+}
+form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.create-post input[type=file]{
+    display: none;
+}
+.create-post input[type=submit]{
+    width: 130px;
+    height: 35px;
+    color: white;
+    background-color: var(--pink);
+    border-radius: 5px;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+.select-image{
+     width: 250px;
+    height: 200px;
+    border: dashed 2px var(--black);
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(146, 146, 146, 0.664);
+}
+.create-post-click-outside{
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.575);
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    display: none;
+    backdrop-filter: blur(5px);
+    cursor: pointer;
+}
+.selected-image{
+    display: none;
+     width: 250px;
+     height: 200px;
+     border-radius: 8px;
+}
+@media screen and (max-width:600px){
+    .navigation-one li{
+        display: none;
+    }
+    .navigation-one li:last-child{
+        display: flex;
+    }
+    .sub-nav{
+    display: block;
+    width: 100vw;
+    height: 50px;
+    position: fixed;
+    z-index: 900;
+    bottom: 0;
+    background-color: var(--pink);
+
+}
+.sub-nav ul {
+    display: flex;
+     width: 100vw;
+     margin: 0;
+     padding: 0;
+     align-items: center;
+     justify-content: space-around;
+}
+.navigation-two li{
+    text-decoration: none;
+    list-style: none;
+    margin: 5px;
+    padding: 0%;
+    width: 50px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.navigation-two li svg{
+    transform: scale(1.7)
+}
+.profile-cart{
+    width: 130px;
+    height: auto;
+    display: FLEX;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(13, 13, 13, 0.37);
+    backdrop-filter: blur(12px);
+    padding: 5px;
+    padding-top: 0;
+    padding-bottom: 0;
+    position: fixed;
+    right: 25px;
+    top: 55px;
+    border-radius: 10px;
+    z-index: 10;
+    transform-origin: right top;
+    transform: scale(0);
+}
+.profile-cart ul{
+    width: 130px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+.profile-cart ul li{
+    width: 120px;
+    list-style: none;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+  .container{
+    box-sizing: border-box;
+    width: 100%;
+    height:fit-content;
+    display: flex;
+    flex-direction:column-reverse;
+  
+}
+.friends{
+    width: 100%;
+    height: fit-content;
+    overflow-y: hidden;
+    border: solid 1px rgba(150, 150, 150, 0.418);
+    margin: 0px;
+    margin-top: 10px;
+    padding: 0px;
+}
+.friends img{
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.titel{
+    color: var(--pink);
+    font-size: var(--h5);
+    border-bottom: solid 1px rgba(150, 150, 150, 0.418);
+    width: 100%;
+   height: 40px;
+}
+.titel h3{
+     margin-left: 20px;
+}
+.friends h4{
+    color: var(--black);
+    font-size: 16px;
+    cursor: pointer;
+}
+.friends-list{
+    width: 100%;
+    height: 180px;
+    box-sizing: border-box;
+    display: flex;
+    padding-top: 10px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding-right: 15px;
+}
+.friends-list a{
+    text-decoration: none;
+}
+.friends-list div{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    
+}
+
+.discuss{
+    box-sizing: border-box;
+    width: 100%;
+    height: fit-content;
+    border: solid 1px rgba(150, 150, 150, 0.418);
+    margin-top: 10px;
+    padding: 0px;
+    margin-right:0px;
+    position: relative;
+}
+.send{
+    width:  100%;
+    height:50px ;
+    position: absolute;
+    box-sizing: border-box;
+    border-top: solid 1px rgba(150, 150, 150, 0.418);
+    bottom:55px;
+    background-color: white;
+}
+.send form{
+    background-color: white;
+}
+.send svg{
+     transform: scale(1.8) rotate(45deg);
+    position: absolute;
+ right: 35px;
+ bottom: 10px;
+    fill: var(--pink);
+    cursor: pointer;
+}
+.send input{
+    width:  97%;
+    height:50px ;
+    box-sizing: border-box;
+
+}
+.messages{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    height:500px;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+ padding-bottom: 120px;
+}
+.friend{
+    height: 60px;
+}
+.friend img{
+    width: 50px;
+    height: 50px;
+}
+.friend .friend-info{
+    width: fit-content;
+    height: 60px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    box-sizing: border-box;
+}
+.online-phone{
+    width: 100px;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.send svg{
+     
+ right: 25px;
+
+}
+.create-post{
+    width: 300px;
+    height: 85vh;
+    border-radius: 20px;
+}
+.create-post  input:first-child{
+    width:90%;
+    height: 150px;
+    
+}
+}
