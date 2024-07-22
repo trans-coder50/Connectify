@@ -1,0 +1,544 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static '/css/saves.css'%}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+     <style>
+        .create-post  input[type="text"]{
+    width:95%;
+    height: 200px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: solid 2px var(--pink);
+}
+    </style>
+    <title>Connectify</title>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <h1>Connectify</h1>
+        </div>
+        <div>
+            <ul class="navigation-one">
+                    <li>
+                        <a href="{%url 'home'%}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"  fill="white" >
+                        <path  d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z"/>
+                        <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z"/>
+                        </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{%url 'notification'%}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-bell-fill" >
+                        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
+                        </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{%url 'messages'%}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-chat-fill" viewBox="0 0 16 16">
+                        <path d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9.06 9.06 0 0 0 8 15z"/>
+                        </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{%url 'invitation'%}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-people-fill" viewBox="0 0 16 16">
+                        <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+                        </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{%url 'search'%}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                        </svg>
+                        </a>
+                    </li>
+                    <li class="profile-img">
+                        <img src="{{profile.profileImg.url}}" alt="" srcset="">
+                    </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="sub-nav">
+        <ul class="navigation-two">
+                    <li>
+                        <a href="{%url 'home'%}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"  fill="white" >
+                        <path  d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z"/>
+                        <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z"/>
+                        </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{%url 'notification'%}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-bell-fill" >
+                        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
+                        </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{%url 'messages'%}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-chat-fill" viewBox="0 0 16 16">
+                        <path d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9.06 9.06 0 0 0 8 15z"/>
+                        </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{%url 'invitation'%}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-people-fill" viewBox="0 0 16 16">
+                        <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+                        </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{%url 'search'%}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                        </svg>
+                        </a>
+                    </li>
+            </ul>
+    </div>
+    <div class="profile-cart">
+        <ul>
+            <li><a href="{%url 'profile'%}">Profile</a></li>
+            <li class="click-to-create-post">Posting</li>
+            <li><a href="{%url 'saves'%}">Saves</a></li>
+            <li><a href="{%url 'logout'%}">Log out</a></li>
+        </ul>
+    </div>
+<div class="container">
+    <div class="posts">
+         {%for post in posts%}
+           
+              <div class="post">
+                <div class="post-img">
+                    <div class="post-user-name">
+                        <img src="{{post.profileImg}}" alt="">
+                        <h4>{{post.username}}</h4>
+                    </div>
+                    <div class="post-content">                    
+                            <img src="{{post.img}}" alt="">
+                    </div>
+                    <div class="posst-reactions">
+                        <div class="post-heart-coment">
+                           
+                            <div class="hearts">
+                            <svg  id="{{post.id}}" xmlns="http://www.w3.org/2000/svg" width="16" height="16" id="{{post.id}}" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                            </svg>
+                            <svg   id="{{post.id}}" xmlns="http://www.w3.org/2000/svg" width="16" height="16" id="{{post.id}}"  class="bi bi-heart" viewBox="0 0 16 16">
+                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                            </svg>
+                            </div>
+                            <svg id="{{post.id}}" xmlns="http://www.w3.org/2000/svg" width="16" height="16"  class="bi bi-chat-square" viewBox="0 0 16 16">
+                            <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                            </svg>
+                        </div>
+                        <div class="post-save">
+                            <svg  id="{{post.id}}" xmlns="http://www.w3.org/2000/svg" width="16" height="16" id="{{post.id}}" class="bi bi-bookmark-fill" viewBox="0 0 16 16">
+                            <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/>
+                            </svg>
+                            <svg  id="{{post.id}}" xmlns="http://www.w3.org/2000/svg" width="16" height="16" id="{{post.id}}"  class="bi bi-bookmark" viewBox="0 0 16 16">
+                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+                            </svg>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="post-description">
+                    <p>{{post.content}}</p>
+                </div>
+            </div>
+            
+            {%endfor%}
+        </div>
+        <div class="comments">
+        <div class="others-comments">
+          
+          
+          
+        </div>
+        
+            <form action="" class="my-comment" id="my-comment" method="post">
+                {% csrf_token %}
+                <input type="text" name="my-comment" id="my-comment-input" placeholder="add your comment....">
+                <input type="number" name="post-id" id="post-id" style="display:none;">
+                <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16"  class="bi bi-send-fill" viewBox="0 0 16 16">
+                <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
+                </svg>
+                <input type="submit" class="fr-sub" value="sub" style="display: none;">
+            </form>
+        
+       </div>
+</div>
+    <div class="click-outside"></div>
+ <div class="create-post" >
+        <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="postContent" id="" placeholder="write something...">
+        <input type="file" name="postImage" id="select-image-input" accept="image/*">
+        <div class="select-image">
+            <img src="{% static 'assets/image.svg'%}" alt="" class="img">
+            <img src="#" alt="" srcset="" class="selected-image">
+        </div>
+        <input type="submit" value="Post" id="create-post-submet">
+        </form>
+    </div>
+    <div class="create-post-click-outside"></div>
+    <input type="hidden" id="logged-in-user" value="{{ user.id }}">
+    <script>
+let profileCart = document.querySelector(".profile-cart");
+let profileImage = document.querySelector(".profile-img");
+let heartFill = document.querySelectorAll(".bi-heart-fill");
+let heart = document.querySelectorAll(".bi-heart");
+let bookmarkFill = document.querySelectorAll(".bi-bookmark-fill");
+let bookmark = document.querySelectorAll(".bi-bookmark");
+let comments = document.querySelector(".comments");
+let commentIcon = document.querySelectorAll(".bi-chat-square");
+let clickOutSide = document.querySelector(".click-outside");
+let indStory = document.querySelectorAll(".ind-story");
+let body = document.querySelector("body");
+let duration = document.querySelector(".duration");
+let indStoryy = document.querySelector(".ind-storyy");
+let createStory = document.querySelector(".create-story");
+let createStoryInput = document.querySelector(".create-story input");
+let createStoryDiv = document.querySelector(".create-story div");
+let storys = document.querySelector(".stories");
+let storyForm = document.querySelector(".storyForm");
+let createStoryClickOutside = document.querySelector(".create-story-click-outside");
+let iComment = document.querySelector(".bi-send-fill");
+let myComment = document.querySelector(".my-comment");
+let clickToCreatePost = document.querySelector(".click-to-create-post");
+let createPost = document.querySelector(".create-post");
+let createPostClickOutside = document.querySelector(".create-post-click-outside");
+let selectImage = document.querySelector(".select-image");
+let selectImageImg = document.querySelector(".select-image .img");
+let selectImageInput = document.querySelector("#select-image-input");
+let selectedImage = document.querySelector(".selected-image");
+let postId = document.querySelector("#post-id")
+let profileImageSrc = document.querySelector(".profile-img img").src;
+
+let myCommentInput = $("#my-comment-input")
+let othersComments = $(".others-comments")
+let post_id=$("#post-id")
+let allCom = {}
+let allUsers={}
+let allImgs={}
+let idNumber = 0
+
+iComment.addEventListener("click", function () {
+    document.querySelector("#my-comment .fr-sub").click()
+    
+})
+
+
+var post = 0
+let send_message_form = $('.my-comment')
+const USER_ID = $('#logged-in-user').val()
+let loc = window.location
+let wsStart = 'ws://'
+
+if(loc.protocol === 'https') {
+    wsStart = 'wss://'
+}
+let endpoint = wsStart + loc.host + loc.pathname
+
+var socket = new WebSocket(endpoint)
+socket.onopen = async function(e){
+console.log('open', e)
+send_message_form.on('submit',function (e){
+        e.preventDefault()
+        let message1 = myCommentInput.val()
+        let message2 = post
+
+        let data = {
+            'message1': message1,
+            'message2': message2,
+            'sent_by': USER_ID,
+        }
+        data = JSON.stringify(data)
+        socket.send(data)
+        $(this)[0].reset()
+ 
+
+    })
+
+}
+socket.onmessage = async function(e){
+    console.log('message', e)
+    let data = JSON.parse(e.data)
+    let message = data['message1']
+    let sent_by_name = data['sent_by_name']
+    newComment(message, sent_by_name)
+}
+
+socket.onerror = async function(e){
+    console.log('error', e)
+}
+
+socket.onclose = async function(e){
+    console.log('close', e)
+}
+
+function newComment(message, sent_by_name){
+    if ($.trim(message) === '') {
+        return false;
+    }
+let comment_element = `
+<div class="one-comment">
+                <div>
+                    <img src="${profileImageSrc}" alt="">
+                    <h3>
+                      ${sent_by_name}
+                    </h3>
+                </div>
+                <p>
+                   ${message}
+                </p>
+            </div>
+`
+othersComments.append(comment_element)
+}
+
+
+
+
+
+
+window.addEventListener("load",function(){
+    msg = "saved!"
+    var xhrrr = new XMLHttpRequest();
+        xhrrr.open("POST", "{% url 'save_post' %}", true);
+        xhrrr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhrrr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+      xhrrr.onreadystatechange = function() {
+          if (xhrrr.readyState === XMLHttpRequest.DONE && xhrrr.status === 200) {
+            var response = JSON.parse(xhrrr.responseText);
+    bookmark.forEach(function(e){
+        for(i of response.message){
+            if (i == e.getAttributeNode("id").nodeValue){
+                e.style.display="none";
+                 e.previousElementSibling.style.display = "block";
+            }
+        }
+})   
+          }}
+          const data = JSON.stringify({ msg: msg});
+          xhrrr.send(data)
+
+
+
+          msgg = "heart!"
+    var xhrr = new XMLHttpRequest();
+        xhrr.open("POST", "{% url 'heart_post' %}", true);
+        xhrr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhrr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+      xhrr.onreadystatechange = function() {
+          if (xhrr.readyState === XMLHttpRequest.DONE && xhrr.status === 200) {
+            var response = JSON.parse(xhrr.responseText);
+    heart.forEach(function(e){
+        for(i of response.message){
+            if (i == e.getAttributeNode("id").nodeValue){
+                e.style.display="none";
+                 e.previousElementSibling.style.display = "block";
+            }
+        }
+})   
+          }}
+          const dataa = JSON.stringify({ msgg: msgg});
+          xhrr.send(dataa)
+
+        
+        })
+
+
+window.addEventListener("scroll", function () {
+    profileCart.classList.remove("cart-show")
+    profileCart.style.transform = "scale(0)";
+    profileCart.style.transition = "transform 0.2s";
+})
+
+selectImageInput.addEventListener("change", function () {
+    selectImageImg.style.display = "none";
+    selectedImage.style.display = "block";
+     let reader = new FileReader();
+    reader.readAsDataURL(selectImageInput.files[0]);
+    reader.onload = () => { 
+         selectedImage.setAttribute("src", reader.result);
+    }
+})
+
+selectImage.addEventListener("click", function () {
+    selectImageInput.click();
+})
+clickToCreatePost.addEventListener("click", function () {
+    createPost.style.display = "flex";
+    createPostClickOutside.style.display = "block";
+    profileCart.classList.remove("cart-show")
+    profileCart.style.transform = "scale(0)";
+    profileCart.style.transition = "transform 0.2s";
+})
+createPostClickOutside.addEventListener("click", function () {
+    createPost.style.display = "none";
+    createPostClickOutside.style.display = "none";
+})
+
+
+
+
+
+
+
+commentIcon.forEach(function(e){
+    e.addEventListener("click", function () {
+        clickOutSide.style.display = "block"
+        comments.style.display = "flex";
+        post = e.getAttributeNode("id").nodeValue
+        //postId.value 
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "{% url 'my_view' %}", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+        xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+             allCom = response.message
+             allUsers = response.users
+             allImgs = response.imgs
+            for(i in allCom){
+                let cc = `
+<div class="one-comment">
+                <div>
+                    <img src="${allImgs[i]}" alt="">
+                    <h3>
+                      ${allUsers[i]}
+                    </h3>
+                </div>
+                <p>
+                   ${allCom[i]}
+                </p>
+            </div>
+`
+othersComments.append(cc)
+            }
+            
+          }
+        };
+
+        var ppost = 0;
+        ppost = e.getAttributeNode("id").nodeValue
+        xhr.send("id=" + ppost); 
+        
+    })
+})
+clickOutSide.addEventListener("click", function () {
+        clickOutSide.style.display = "none"
+        comments.style.display = "none";
+        let othersCommentsOne = document.querySelectorAll(".others-comments .one-comment")
+        Array.from(othersCommentsOne).forEach(child => child.remove());
+})
+heartFill.forEach(function(e){
+    e.addEventListener("click",function(){
+        e.style.display = "none";
+        e.nextElementSibling.style.display = "block";
+        let idNumber = e.getAttributeNode("id").nodeValue
+        let msg  = "notHeart"
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "{% url 'heart_post' %}", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+      xhr.onreadystatechange = function() {
+          if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+          }}
+          const data = JSON.stringify({idNumber:idNumber, msg: msg});
+          xhr.send(data)
+    })
+})
+heart.forEach(function(e){
+    e.addEventListener("click",function(){
+        e.style.display = "none";
+        e.previousElementSibling.style.display = "block";
+        let idNumber = e.getAttributeNode("id").nodeValue
+        let msg  = "heart"
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "{% url 'heart_post' %}", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+      xhr.onreadystatechange = function() {
+          if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+          }}
+          const data = JSON.stringify({idNumber:idNumber, msg: msg});
+          xhr.send(data)
+    })
+}) 
+
+
+bookmarkFill.forEach(function(e){
+    e.addEventListener("click",function(){
+        e.style.display = "none";
+        e.nextElementSibling.style.display = "block";
+        let idNumber = e.getAttributeNode("id").nodeValue
+        let msg  = "notSave"
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "{% url 'save_post' %}", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+      xhr.onreadystatechange = function() {
+          if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+          }}
+          const data = JSON.stringify({idNumber:idNumber, msg: msg});
+          xhr.send(data)
+    })
+})
+bookmark.forEach(function(e){
+    e.addEventListener("click",function(){
+        e.style.display = "none";
+        e.previousElementSibling.style.display = "block";
+        let idNumber = e.getAttributeNode("id").nodeValue
+        let msg  = "save"
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "{% url 'save_post' %}", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+      xhr.onreadystatechange = function() {
+          if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+          }}
+          const data = JSON.stringify({idNumber:idNumber, msg: msg});
+          xhr.send(data)
+    })
+})   
+   
+
+profileImage.addEventListener("click", function () {
+    profileCart.classList.toggle("cart-show");
+    if (profileCart.classList.contains("cart-show")) {
+        profileCart.style.transform = "scale(1)";
+        profileCart.style.transition = "transform 0.5s";
+    } else {
+        profileCart.style.transform = "scale(0)";
+        profileCart.style.transition = "transform 0.5s";
+    }
+})
+
+
+
+    </script>
+</body>
+</html>

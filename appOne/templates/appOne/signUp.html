@@ -1,0 +1,54 @@
+{%load static%}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static '/css/signUp.css'%}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <title>Connectify</title>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <h1>Connectify</h1>
+        </div>
+    </nav>
+    <div class="form">
+        <form method="post">
+            {% csrf_token %}
+            <div class="login">
+                <label for="email">Email</label>
+                {{form.email }}	
+                <label for="username">User name</label>
+                {{form.username }}	
+                <label for="password">Password</label>
+                {{form.password}}	
+                <label for="password2">Repeat Password</label>
+                {{form.confirm_password}}	
+                
+                <input type="submit" value="Sign up">
+            </div>
+            {% if form.errors %}
+        
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endfor %}
+            {% if form.non_field_errors %}
+                <p>{{ form.non_field_errors }}</p>
+            {% endif %}
+        
+    {% endif %}
+            <a href="{%url 'signin' %}">Already have an account</a>
+
+        </form>
+    </div>
+</body>
+</html>

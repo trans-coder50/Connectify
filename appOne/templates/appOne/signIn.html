@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static '/css/signIn.css'%}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <title>Connectify</title>
+<body>
+    <nav>
+        <div class="logo">
+            <h1>Connectify</h1>
+        </div>
+    </nav>
+    <div class="form">
+        
+        <form method="post">
+            
+            {% csrf_token %}
+            
+            <div class="login">
+                
+                <label for="username">User name</label>
+                <input type="text" name="username" id="username">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password">
+                <div>
+                    <input type="checkbox" name="checkbox" id="check">
+                    <label for="check">Remember me</label>
+                </div>
+                
+                <input type="submit" value="Log in">
+            </div>
+            <br><br>
+            {% for ms in messages%}
+                {{ms}}
+                {% endfor%}
+                <br><br>
+            <a href="{% url 'signup' %}">Create an account</a>
+
+        </form>
+    </div>
+</body>
+</html>
